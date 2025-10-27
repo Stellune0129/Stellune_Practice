@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Commission Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background-color: #fff;
+      color: #222;
+    }
+
+    /* 최상단 타이틀 */
+    .page-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      padding: 20px 0;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 사이드바 */
+    .sidebar {
+      width: 250px;
+      padding: 20px;
+      border-right: 1px solid #eee;
+    }
+    .profile-pic {
+      width: 100%;
+      height: 150px;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .nickname {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .sns {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .category {
+      margin-bottom: 30px;
+    }
+    .category h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .category ul {
+      list-style: none;
+      padding: 0;
+    }
+    .category ul li {
+      margin: 5px 0;
+    }
+    .open-box {
+      background: #f9f9f9;
+      color: #93c2ff;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #eee;
+      border-radius: 6px;
+    }
+
+    /* 메인 영역 */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+    .header {
+      width: 100%;
+      height: 200px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .notice {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-left: 5px solid #93c2ff;
+      font-size: 15px;
+      padding: 15px;
+      margin-bottom: 30px;
+    }
+    .commission-status {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      font-size: 14px;
+      padding: 20px;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .tab {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #fff;
+      transition: 0.2s;
+    }
+    .tab:hover {
+      background: #f0f0f0;
+    }
+    .tab.active {
+      background: #93c2ff;
+      color: #fff;
+    }
+
+    /* 탭 콘텐츠 */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* 캘린더 스타일 */
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .calendar-header button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      text-align: center;
+    }
+    .calendar-grid div {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .calendar-grid .day-name {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+    .calendar-grid .today {
+      background: #93c2ff;
+      color: #fff;
+      font-weight: bold;
+    }
+    .calendar-grid .other-month {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <!-- 최상단 타이틀 -->
+  <div class="page-title">COMMISSION</div>
+
+  <div class="container">
+    <!-- 좌측 사이드바 -->
+    <div class="sidebar">
+      <div class="profile-pic">프로필 사진</div>
+      <div class="nickname">닉네임</div>
+      <div class="sns">SNS 주소 / 연락처</div>
+      <div class="category">
+        <h3>CATEGORIE</h3>
+        <ul>
+          <li>⛤ INFO</li>
+          <li>⛤ TYPE & SAMPLE</li>
+        </ul>
+      </div>
+      <div class="open-box">OPEN<br>오픈여부, 일정 작성</div>
+    </div>
+
+    <!-- 메인 영역 -->
+    <div class="main">
+      <div class="header">헤더 사진</div>
+      <div class="notice">
+        <strong>⚠ NOTICE</strong><br>
+        커미션 관련 긴급 공지 작성
+      </div>
+      <div class="commission-status">
+        <div class="tabs">
+          <div class="tab active" data-tab="board">보드</div>
+          <div class="tab" data-tab="timeline">타임라인</div>
+          <div class="tab" data-tab="calendar">캘린더</div>
+        </div>
+        <!-- 보드 -->
+        <div class="tab-content active" id="board">
+          <p>작업 대기: 0<br>진행 중: 0</p>
+        </div>
+        <!-- 타임라인 -->
+        <div class="tab-content" id="timeline">
+          <p>작업 타임라인 표시 영역</p>
+        </div>
+        <!-- 캘린더 -->
+        <div class="tab-content" id="calendar">
+          <div class="calendar-header">
+            <button id="prevMonth">◀</button>
+            <span id="calendar-title"></span>
+            <button id="nextMonth">▶</button>
+          </div>
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- 동적 캘린더 삽입 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 탭 기능
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        contents.forEach(c => c.classList.remove("active"));
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+
+    // 캘린더 기능
+    let currentYear, currentMonth;
+
+    function generateCalendar(year, month) {
+      const today = new Date();
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+
+      const calendarTitle = document.getElementById("calendar-title");
+      const calendarGrid = document.getElementById("calendar-grid");
+
+      const monthNames = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
+      calendarTitle.textContent = `${year}년 ${monthNames[month]}`;
+
+      // 초기화
+      calendarGrid.innerHTML = "";
+
+      // 요일 헤더
+      const dayNames = ["일","월","화","수","목","금","토"];
+      dayNames.forEach(d => {
+        const div = document.createElement("div");
+        div.textContent = d;
+        div.classList.add("day-name");
+        calendarGrid.appendChild(div);
+      });
+
+      // 이전 달 날짜 채우기
+      const prevLastDay = new Date(year, month, 0).getDate(); // 전달 마지막 날짜
+      for (let i = firstDay.getDay() - 1; i >= 0; i--) {
+        const div = document.createElement("div");
+        div.textContent = prevLastDay - i;
+        div.classList.add("other-month");
+        calendarGrid.appendChild(div);
+      }
+
+      // 이번 달 날짜 채우기
+      for (let d = 1; d <= lastDay.getDate(); d++) {
+        const div = document.createElement("div");
+        div.textContent = d;
+
+        if (
+          d === today.getDate() &&
+          year === today.getFullYear() &&
+          month === today.getMonth()
+        ) {
+          div.classList.add("today");
+        }
+
+        calendarGrid.appendChild(div);
+      }
+
+      // 다음 달 날짜 채우기 (42칸 고정)
+      const totalCells = calendarGrid.querySelectorAll("div").length;
+      const remaining = 7 * 6 - totalCells; // 42칸 맞추기
+      for (let d = 1; d <= remaining; d++) {
+        const div = document.createElement("div");
+        div.textContent = d;
+        div.classList.add("other-month");
+        calendarGrid.appendChild(div);
+      }
+    }
+
+    function initCalendar() {
+      const now = new Date();
+      currentYear = now.getFullYear();
+      currentMonth = now.getMonth();
+      generateCalendar(currentYear, currentMonth);
+    }
+
+    document.getElementById("prevMonth").addEventListener("click", () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+
+    document.getElementById("nextMonth").addEventListener("click", () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+
+    initCalendar();
+  </script>
+</body>
+</html>
