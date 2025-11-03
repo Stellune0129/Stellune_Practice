@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMMISSION</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+      background: #fafafa;
+      color: #333;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* 사이드바 */
+    .sidebar {
+      background: #fff;
+      border-right: 1px solid #eee;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      background: #ddd;
+      border-radius: 6px;
+      margin: 0 auto 10px;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* 메뉴 */
+    .menu ul, .category ul, .socials ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .menu a, .socials a {
+      text-decoration: none;
+      color: #555;
+      display: block;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .menu a:hover, .socials a:hover {
+      color: #8ac6ff;
+    }
+
+    /* 카테고리 */
+    .category .title, .socials .title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    /* 푸터 */
+    .sidebar footer {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    /* 메인 콘텐츠 */
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .notfound {
+      text-align: center;
+      color: #888;
+    }
+
+    .notfound .icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    /* 상단 검색창 */
+    .topbar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      background: none;
+      padding: 5px;
+    }
+
+    .search-box button {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* 다크모드 */
+    body.dark {
+      background: #111;
+      color: #ddd;
+    }
+
+    body.dark .sidebar {
+      background: #1a1a1a;
+      border-right: 1px solid #333;
+    }
+
+    body.dark .menu a, body.dark .socials a {
+      color: #aaa;
+    }
+
+    body.dark .menu a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 사이드바 -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"></div>
+        <div class="name">☆彡</div>
+        <div class="status">COMMISSION : CLOSE</div>
+      </div>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Notice</a></li>
+          <li><a href="#">Tag cloud</a></li>
+          <li><a href="#">Get in touch</a></li>
+        </ul>
+      </nav>
+
+      <div class="category">
+        <p class="title">CATEGORY</p>
+        <ul>
+          <li>My Artworks (0)</li>
+          <li>Commission (0)</li>
+          <ul>
+            <li>Type (0)</li>
+            <li>Sample (0)</li>
+          </ul>
+          <li>Study (0)</li>
+        </ul>
+      </div>
+
+      <div class="socials">
+        <p class="title">SOCIALS</p>
+        <ul>
+          <li><a href="https://twitter.com/Starlitree" target="_blank">Twitter | @Starlitree</a></li>
+          <li><a href="https://twitter.com/Starlit_CM" target="_blank">Twitter | @Starlit_CM</a></li>
+          <li><a href="#">CREPE</a></li>
+        </ul>
+      </div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="content">
+      <section class="notfound">
+        <div class="icon">🗒️</div>
+        <p>Post not found</p>
+      </section>
+    </main>
+
+    <!-- 상단 검색 / 테마 -->
+    <header class="topbar">
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <label for="theme-switch">🌞 / 🌙</label>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="search" />
+        <button>🔍</button>
+      </div>
+    </header>
+  </div>
+
+  <script>
+    const switcher = document.getElementById("theme-switch");
+    if (switcher) {
+      switcher.addEventListener("change", () => {
+        document.body.classList.toggle("dark", switcher.checked);
+      });
+    }
+  </script>
+</body>
+</html>
